@@ -20,16 +20,32 @@
 
 <!-- PAGE PLUGINS -->
 <!-- jQuery Mapael -->
-<script src="plugins/jquery-mousewheel/jquery.mousewheel.js"></script>
-<script src="plugins/raphael/raphael.min.js"></script>
-<script src="plugins/jquery-mapael/jquery.mapael.min.js"></script>
-<script src="plugins/jquery-mapael/maps/usa_states.min.js"></script>
+<
 <!-- ChartJS -->
-<script src="plugins/chart.js/Chart.min.js"></script>
+
 
 <!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
+
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="dist/js/pages/dashboard2.js"></script>
+<script>
+  (function(){
+    var path = window.location.href;
+    // console.log(path);
+    $(".nav-link").each(function () {
+
+      var href = $(this).attr('href');
+      // console.log(href);
+      if (path === decodeURIComponent(href)) 
+      {
+        $(this).addClass('active');
+        var parent = $(this).closest('.has-treeview');
+        parent.addClass('menu-open');
+        $(parent).find('.nav-link').first().addClass('active');
+        // console.log(parent);
+      };
+    });
+  }());
+</script>
 </body>
 </html>

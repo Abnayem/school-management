@@ -1,5 +1,6 @@
 <?php
 session_start();
+$site_url = 'http://localhost/school-management-php/';
 if(isset($_SESSION['login']))
 {
   
@@ -18,7 +19,7 @@ else
   <title>Admin Dashboard </title>
 
   <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="../https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- overlayScrollbars -->

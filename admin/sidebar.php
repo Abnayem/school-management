@@ -139,7 +139,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="dashbord.php" class="nav-link">
+            <a href="<?=$site_url?>admin/dashbord.php" class="nav-link">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>Dashboard</p>
             </a>
@@ -154,31 +154,31 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="user-account.php?user=counseller" class="nav-link">
+                <a href="<?=$site_url?>admin/user-account.php?user=counseller" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Counseller</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="user-account.php?user=teacher" class="nav-link">
+                <a href="<?=$site_url?>admin/user-account.php?user=teacher" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Teachers</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="user-account.php?user=student" class="nav-link">
+                <a href="<?=$site_url?>admin/user-account.php?user=student" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Students</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="user-account.php?user=parent" class="nav-link">
+                <a href="<?=$site_url?>admin/user-account.php?user=parent" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Parents</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="user-account.php?user=librarian" class="nav-link">
+                <a href="<?=$site_url?>admin/user-account.php?user=librarian" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Librarian</p>
                 </a>
@@ -196,13 +196,13 @@
             <ul class="nav nav-treeview">
 
             <li class="nav-item">
-                <a href="section.php" class="nav-link">
+                <a href="<?=$site_url?>admin/section.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Sections</p>
                 </a>
               </li>
             <li class="nav-item">
-                <a href="classes.php" class="nav-link">
+                <a href="<?=$site_url?>admin/classes.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Classes</p>
                 </a>
