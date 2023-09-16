@@ -8,7 +8,7 @@ if(!$db_conn)
   exit;
  
 }
-
+session_start();
        
 
 ?>

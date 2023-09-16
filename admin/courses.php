@@ -1,8 +1,7 @@
-<?php include('header.php'); ?>
-<?php include('sidebar.php'); ?>
-
+<?php include('../includes/config.php') ?>
 <?php
-$db_conn = mysqli_connect('localhost','root','','ab_project');
+
+
 
 if(isset($_POST['submit']))
 {
@@ -11,41 +10,50 @@ $name = $_POST['course'];
 $category =  $_POST['category'];
 $duration =  $_POST['duration'];
 $date =  date('Y-m-d');
-
-  $imgfile = $_FILES['thumnail']['name'];
-	$tmp_dir = $_FILES['thumnail']['tmp_name'];
-	$imgsize = $_FILES['thumnail']['size'];
+$imgfile = $_FILES['thumnail']['name'];
+$tmp_dir = $_FILES['thumnail']['tmp_name'];
+$imgsize = $_FILES['thumnail']['size'];
 
     $upload_dir ='../dist/upload/';
 		$img = strtolower(pathinfo($imgfile,PATHINFO_EXTENSION));
 		$valid_exenstion = array('jpeg','jpg','png','gif');
 		$productspic = rand(100,10000000).".".$img;
+    
 		if(in_array($img, $valid_exenstion))
 		{
-			if($imgsize < 5000000)
+			if(move_uploaded_file($tmp_dir,$upload_dir.$productspic))
 			{
-				move_uploaded_file($tmp_dir,$upload_dir.$productspic);
+				mysqli_query($db_conn,"INSERT INTO coureses (name,category,	duration,image,date) VALUE ('$name','$category','$duration','$productspic','$date')")
+        or die(mysqli_error($db_conn));
         $_SESSION['success_msg'] = 'Course has been uploaded successfuly';
+        header('Location: courses.php'); exit;
+        
 			}
 			else
 			{
-				echo "sorry,the file is soo long";
+        if($imgsize > 5000000)
+       {
+      echo "sorry,the file is soo long";
+        }
+				
 			}
+     
 		}
 		else
 		{
+
 			echo "sorry, only jpg,png and gif image are allowed";
     
 		}
   
 
-  mysqli_query($db_conn,"INSERT INTO coureses (name,category,	duration,image,date) VALUE ('$name','$category','$duration','$productspic','$date')")
-  or die(mysqli_error($db_conn));
+  
 }
 
 
 ?>
-
+<?php include('header.php'); ?>
+<?php include('sidebar.php'); ?>
 <div class="content-header">
       <div class="container-fluid">
         <div class="row mb-2">
@@ -134,7 +142,7 @@ if(isset($_REQUEST['action']))
     </thead>
     <tbody>
       <?php 
-      $db_conn = mysqli_connect('localhost','root','','ab_project');
+   
       $count = 1;
       $query = mysqli_query($db_conn,'SELECT * FROM coureses');
       while($courses = mysqli_fetch_object($query))
@@ -147,7 +155,7 @@ if(isset($_REQUEST['action']))
           <td><?=$courses->category?></td>
           <td><?=$courses->duration?></td>
           <td><?=$courses->date?></td>
-          <td><img src="../dist/upload/<?=$courses->image?>" alt="<?=$courses->name?>" height="100"  class="border"></td>
+          <td><img src="../dist/upload/<?=$courses->image?>" alt="<?=$courses->name?>" height="100"  class="border" style="height:178px;!important;object-fit:cover;object-position:center;"></td>
         </tr>
 
 

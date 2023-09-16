@@ -1,4 +1,5 @@
 <?php
+
 if(isset($_POST['login']))
 {
   $email = $_POST['email'];
@@ -7,7 +8,9 @@ if(isset($_POST['login']))
   if($email == 'admin@example.com' && $pass == 'admin')
   {
     session_start();
+
       $_SESSION['login'] = true;
+
       header('Location:../admin/dashbord.php');
   }
   else

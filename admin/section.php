@@ -1,7 +1,6 @@
-<?php include('header.php'); ?>
-<?php include('sidebar.php'); ?>
+<?php include('../includes/config.php') ?>
 <?php
-$db_conn = mysqli_connect('localhost','root','','ab_project');
+
 
 if(isset($_POST['submit']))
 {
@@ -12,6 +11,8 @@ if(isset($_POST['submit']))
 
 
 ?>
+<?php include('header.php'); ?>
+<?php include('sidebar.php'); ?>
 
 <div class="content-header">
       <div class="container-fluid">

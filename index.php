@@ -1,4 +1,61 @@
-<?php include_once('header.php');?>
+<?php include('includes/config.php') ?>
+
+<?php include('header.php')?>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#"><b>AbSchool</b></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+      aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Courses</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Events</a>
+        </li>
+        <!-- <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">Dropdown
+          </a>
+          <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="#">Action</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="#">Something else here</a>
+          </div>
+        </li> -->
+      </ul>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        
+        <li class="nav-item dropdown">
+         <?php if(isset($_SESSION['login'])) { ?>
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user mr-2"></i>Account
+          </a>
+          <div class="dropdown-menu dropdown-menu-right dropdown-default"
+            aria-labelledby="navbarDropdownMenuLink-333">
+            <a class="dropdown-item" href="/sms/admin/dashboard.php">Dashboard</a>
+            <a class="dropdown-item" href="#">Another action</a>
+            <a class="dropdown-item" href="logout.php">Logout</a>
+          </div>
+        <?php } else {?>
+          <a href="login.php" class="nav-link"><i class="fa fa-user mr-2"></i>User login</a>
+     <?php }?>
+
+        </li>
+      </ul>
+    </div>
+  </nav>
 <div class="py-5 shadow" style="background:linear-gradient(-40deg, lightblue 45%, transparent 45%)">
  <div class="container-fluid my-2">
 <div class="row">
@@ -65,6 +122,15 @@
   </div>
   <!-- About us end -->
 <!-- cources start -->
+<style>
+  .courses-image
+  {
+    width:100%;
+    height: 170px !important;
+    object-fit: cover;
+    object-position: center;
+  }
+</style>
     <section class="py-5 bg-light">
     <div class="text-center mb-5">
     <h2 class="font-weight-bold">Our Courses</h2>
@@ -72,16 +138,21 @@
    </div>
    <div class="container">
     <div class="row">
-      <?php for($i=0; $i < 12; $i++){   ?>
+      <?php
+        $query = mysqli_query($db_conn,"SELECT * FROM  coureses ORDER BY id desc limit 0 ,8");
+      while($course = mysqli_fetch_object($query))
+     {
+
+       ?>
      <div class="col-lg-3">
       <div class="card">
         <div>
-          <img src="./assets/img/web.jpg" alt="" class="img-fluid rounded-top">
+          <img src="./dist/upload/<?=$course->image?>" alt="" class="img-fluid rounded-top courses-image">
         </div>
         <div class="card-body">
-          <b>Web Design</b>
+          <b><?=$course->name?></b>
           <p class="card-text">
-            <b>Duration: </b> 60 hours <br>
+            <b>Duration: </b> <?=$course->duration?> <br>
             <b>Couece Fee:</b> 10000/- Tk
           </p>
           <button class="btn btn-block btn-primary btn-sm">Enrool Now</button>

@@ -1,6 +1,4 @@
-<?php include('header.php'); ?>
-<?php include('sidebar.php'); ?>
-
+<?php include('../includes/config.php') ?>
 <?php
 $db_conn = mysqli_connect('localhost','root','','ab_project');
 
@@ -17,6 +15,8 @@ if(isset($_POST['submit']))
 
 
 ?>
+<?php include('header.php'); ?>
+<?php include('sidebar.php'); ?>
 
 <div class="content-header">
       <div class="container-fluid">
@@ -102,7 +102,7 @@ if(isset($_REQUEST['action']))
     </thead>
     <tbody>
       <?php 
-      $db_conn = mysqli_connect('localhost','root','','ab_project');
+    
       $count = 1;
       $query = mysqli_query($db_conn,'SELECT * FROM classes');
       while($classes = mysqli_fetch_object($query)){?>
