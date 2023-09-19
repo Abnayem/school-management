@@ -53,14 +53,19 @@ if(isset($_POST['submit']))
     </thead>
     <tbody>
       <?php 
-      $db_conn = mysqli_connect('localhost','root','','ab_project');
       $count = 1;
-      $query = mysqli_query($db_conn,'SELECT * FROM sections');
-      while($section = mysqli_fetch_object($query)){?>
+     $args = array(
+      'type' => 'section',
+      'status' => 'publish',
+    );
+    $section = get_posts($args);
+    foreach($section  as $sec)
+                  
+    {?>
 
         <tr>
           <td><?=$count++?></td>
-          <td><?=$section->title?></td>
+          <td><?=$sec->title?></td>
           <td></td>
           
         </tr>

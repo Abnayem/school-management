@@ -194,20 +194,19 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-
-            <li class="nav-item">
-                <a href="<?=$site_url?>admin/section.php" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Sections</p>
-                </a>
-              </li>
             <li class="nav-item">
                 <a href="<?=$site_url?>admin/classes.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Classes</p>
                 </a>
               </li>
-
+            <li class="nav-item">
+                <a href="<?=$site_url?>admin/section.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Sections</p>
+                </a>
+              </li>
+           
               <li class="nav-item">
                 <a href="<?=$site_url?>admin/courses.php" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>

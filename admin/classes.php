@@ -1,6 +1,6 @@
 <?php include('../includes/config.php') ?>
 <?php
-$db_conn = mysqli_connect('localhost','root','','ab_project');
+
 
 if(isset($_POST['submit']))
 {
@@ -55,7 +55,7 @@ if(isset($_REQUEST['action']))
   <div class="form-group">
   <label for="section">Section</label>
     <?php
-     $db_conn = mysqli_connect('localhost','root','','ab_project');
+    
 
      if(!$db_conn)
      {
@@ -104,21 +104,27 @@ if(isset($_REQUEST['action']))
       <?php 
     
       $count = 1;
-      $query = mysqli_query($db_conn,'SELECT * FROM classes');
-      while($classes = mysqli_fetch_object($query)){?>
+      $args = array(
+        'type' => 'class',
+        'status' => 'publish',
+      );
+      $classes = get_posts($args);
+foreach($classes as $class)
+     
+      {?>
 
         <tr>
           <td><?=$count++?></td>
-          <td><?=$classes->title?></td>
+          <td><?=$class->title?></td>
           <td>
             <?php
-             $sections = explode(',',$classes->section);
-             foreach($sections as $section)
-             {
-              $sec_query = mysqli_query($db_conn,'SELECT * FROM sections WHERE ID = '.$section.'');
-              $sec = mysqli_fetch_object($sec_query);
-              echo $sec->title.'<br>';
-             }
+            //  $sections = explode(',',$classes->section);
+            //  foreach($sections as $section)
+            //  {
+            //   $sec_query = mysqli_query($db_conn,'SELECT * FROM sections WHERE ID = '.$section.'');
+            //   $sec = mysqli_fetch_object($sec_query);
+            //   echo $sec->title.'<br>';
+            //  }
            
             
 

@@ -1,5 +1,4 @@
 <?php include('../includes/config.php') ?>
-<?php include('../includes/function.php') ?>
 <?php
 
 
@@ -134,14 +133,18 @@ if(isset($_REQUEST['action']))
               <label for="class">Select Class</label>
               <select name="class" id="class" class="form-control" required>
                 <option value="">Select Class</option>
-                 <?php 
-                $classes = get_the_classes($db_conn);
-                foreach ( $classes as $key => $class)
-                {
+                <?php 
+    
+                    $count = 1;
+                    $args = array(
+                      'type' => 'class',
+                      'status' => 'publish',
+                    );
+                    $classes = get_posts($args);
+                foreach($classes as $class)
                   
-                
-                ?>
-                <option value=""><?php echo $class->title?></option>
+                    {?>
+                <option value="<?php echo $class->id?>"><?php echo $class->title?></option>
                 <?php }?>
               </select>
             </div>

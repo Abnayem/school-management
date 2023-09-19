@@ -10,5 +10,5 @@ if(!$db_conn)
 }
 session_start();
        
-
+include('function.php');
 ?>
